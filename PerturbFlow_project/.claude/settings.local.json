@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(python:*)",
+      "Bash(done)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(./summarize_results.sh:*)",
+      "Bash(ls:*)",
+      "Bash(./summarize_results_norman.sh:*)",
+      "Bash(python3:*)",
+      "Bash(wc -l:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
