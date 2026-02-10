@@ -8,6 +8,7 @@
 ```
 CausalKAN-Flow/
 ├── README.md
+├── requirements.txt                   # Python 依赖
 ├── data/                              # 数据集存放目录
 └── PerturbFlow_project/               # 核心代码
     ├── main.py                        # 主入口（训练/预测）
