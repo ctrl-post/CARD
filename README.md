@@ -10,7 +10,7 @@ CausalKAN-Flow/
 ├── README.md
 ├── data/                              # 数据集存放目录
 └── PerturbFlow_project/               # 核心代码
-    ├── main.py                        # 主入口（训练/预测/评估）
+    ├── main.py                        # 主入口（训练/预测）
     ├── inference.py                   # 推理模块
     ├── config/
     │   └── config.py                  # 配置管理（DataConfig, ModelConfig, TrainingConfig）
@@ -19,8 +19,8 @@ CausalKAN-Flow/
     │   └── data_splitter.py           # 数据集划分策略
     ├── models/
     │   ├── perturbation_flow_model.py # 主模型（PerturbFlowModel）
-    │   ├── kan_layer.py               # KAN 基础层（B样条激活）
-    │   ├── kan_reflow.py              # KAN-ReFlow 动力学映射
+    │   ├── kan_layer.py               # KAN 基础层
+    │   ├── kan_reflow.py              # KAN-ReFlow
     │   ├── bio_adaptive_gating.py     # 生物学自适应门控
     │   ├── interaction_model.py       # 双基因扰动交互
     │   └── mlp.py                     # MLP 组件
@@ -44,14 +44,8 @@ CausalKAN-Flow/
 conda create -n causalkan python=3.10
 conda activate causalkan
 
-# PyTorch (根据 CUDA 版本选择)
-pip install torch==2.3.0 torchvision==0.18.0 torchaudio==2.3.0 --index-url https://download.pytorch.org/whl/cu118
-
-# PyTorch Geometric
-pip install torch-geometric
-
-# 其他依赖
-pip install scanpy anndata numpy scipy scikit-learn pandas tqdm optuna lightgbm
+# 安装其余依赖
+pip install -r requirements.txt
 ```
 
 ### 核心依赖
@@ -73,8 +67,8 @@ pip install scanpy anndata numpy scipy scikit-learn pandas tqdm optuna lightgbm
 - `norman` — Norman et al. 单基因/双基因扰动
 - `adamson` — Adamson et al. 扰动数据
 - `dixit` — Dixit et al. 扰动数据
-- `replogle_k562_essential` — Replogle K562 必需基因扰动
-- `replogle_rpe1_essential` — Replogle RPE1 必需基因扰动
+- `replogle_k562_essential` — Replogle K562 扰动数据
+- `replogle_rpe1_essential` — Replogle RPE1 扰动数据
 
 数据集目录需包含 `perturb_processed.h5ad` 文件。
 
@@ -83,11 +77,11 @@ pip install scanpy anndata numpy scipy scikit-learn pandas tqdm optuna lightgbm
 ```bash
 cd PerturbFlow_project
 
-# 默认配置训练（norman 数据集，simulation 划分）
-python main.py --dataset norman --seed 1
+# 默认配置训练（dixit 数据集，simulation 划分）
+python main.py --dataset dixit --seed 1
 
 # 自定义参数训练
-python main.py --dataset norman \
+python main.py --dataset dixit \
     --seed 1 \
     --hidden_size 64 \
     --kan_hidden_dim 256 \
@@ -103,17 +97,11 @@ python main.py --dataset norman \
 ### 预测
 
 ```bash
-python main.py --dataset norman --mode predict \
+python main.py --dataset dixit --mode predict \
     --model_path /path/to/saved/model \
-    --perturbations BRCA1 TP53
+    --perturbations BRCA1
 ```
 
-### 评估
-
-```bash
-python main.py --dataset norman --mode evaluate \
-    --model_path /path/to/saved/model
-```
 
 ## 主要命令行参数
 
