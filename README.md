@@ -54,9 +54,6 @@ pip install -r requirements.txt
 |------|------|
 | PyTorch >= 2.3.0 | 深度学习框架 |
 | PyTorch Geometric | 图神经网络 |
-| scanpy / anndata | 单细胞数据处理 |
-| scipy | 统计计算（Pearson 相关等） |
-| scikit-learn | 评估指标 |
 
 ## 快速开始
 
