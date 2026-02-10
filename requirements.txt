@@ -8,4 +8,3 @@ scanpy
 matplotlib
 seaborn
 tqdm
-wandb
