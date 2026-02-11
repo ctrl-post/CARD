@@ -2,6 +2,7 @@
 
 精准医疗中，预测基因或治疗干预对患者的具体效应是核心挑战之一。提出 CausalKAN-Flow 框架，面向高维稀疏生物医学数据进行回归建模预测，通过**局部因果子图约束**与 **LLM 语义融合**增强表征，以 **KAN 参数化的 Rectified Flow** 构建反事实轨迹，解决精准医疗中基因或治疗干预效应难以预测的问题。
 
+![f0163264bf77b4f5654f47bef5d24b48](https://github.com/user-attachments/assets/072e724c-87bb-40ea-a9c4-9a44378d8779)
 
 ## 项目结构
 
@@ -67,6 +68,8 @@ pip install -r requirements.txt
 - `dixit` — Dixit et al. 扰动数据
 - `replogle_k562_essential` — Replogle K562 扰动数据
 - `replogle_rpe1_essential` — Replogle RPE1 扰动数据
+
+数据集下载链接：https://dataverse.harvard.edu/api/access/datafile/6154416
 
 数据集目录需包含 `perturb_processed.h5ad` 文件。
 
